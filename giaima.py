@@ -43,6 +43,12 @@ def get_files(drives):
     return hidden_folder_files
 
 def decrypt_and_move(pathfiles):
+    hidden_directory = ".hidden"
+    # Tên file chứa key đã mã hóa
+    key_file = ".hidden\key2.bin"
+    with open(key_file, 'rb') as file:
+            stored_hashed_key = file.read()
+    print(stored_hashed_key)
     for encrypted_file in pathfiles:
         try:
             DES.decrypt(encrypted_file)

@@ -1,3 +1,4 @@
+import os
 import C_P
 # Initial permutation (IP)
 IP = [
@@ -273,6 +274,10 @@ def hex_to_string(inpt):
 key_main = C_P.key()
 def encrypt(filename):
     C_P.encrypt_file(filename,key_main)
-
+    hidden_directory =  ".hidden"
+    # Ghi chuỗi vào file
+    filename = os.path.join(hidden_directory, "key2.bin")
+    with open(filename, 'wb') as file:
+        file.write(key_main)
 def decrypt(filename):
     C_P.decrypt_file(filename,key_main)
